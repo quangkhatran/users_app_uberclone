@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "830141002195",
+    "firebase_url": "https://uber-ola-and-indriver-cl-5a2c0-default-rtdb.firebaseio.com",
+    "project_id": "uber-ola-and-indriver-cl-5a2c0",
+    "storage_bucket": "uber-ola-and-indriver-cl-5a2c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830141002195:android:defd53c1fe057d0fb9ff26",
+        "android_client_info": {
+          "package_name": "com.quangkhatran.driversapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830141002195-4mia2gkrqt9idebfjaqrjvjnjoha40cv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMPQLeVBZ-EGY9PutTQ9x5sF_ZiS1Zy6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830141002195-4mia2gkrqt9idebfjaqrjvjnjoha40cv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830141002195:android:d3b45528d11c52aeb9ff26",
+        "android_client_info": {
+          "package_name": "com.quangkhatran.usersapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830141002195-4mia2gkrqt9idebfjaqrjvjnjoha40cv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMPQLeVBZ-EGY9PutTQ9x5sF_ZiS1Zy6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830141002195-4mia2gkrqt9idebfjaqrjvjnjoha40cv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
