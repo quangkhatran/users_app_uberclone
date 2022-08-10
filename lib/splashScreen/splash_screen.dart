@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../authentication/login_screen.dart';
 import '../global/global.dart';
 import '../mainScreens/main_screen.dart';
 
@@ -22,12 +23,12 @@ class _MySplashScreenState extends State<MySplashScreen> {
           ),
         );
       } else {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (c) => LoginScreen(),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (c) => LoginScreen(),
+          ),
+        );
       }
     });
   }

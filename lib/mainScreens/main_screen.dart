@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:users_app/global/global.dart';
+
+import '../authentication/login_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -11,7 +14,11 @@ class _MainScreenState extends State<MainScreen> {
     return Center(
       child: ElevatedButton(
         child: const Text('Logout'),
-        onPressed: () {},
+        onPressed: () {
+          fAuth.signOut();
+          Navigator.push(
+              context, MaterialPageRoute(builder: (c) => LoginScreen()));
+        },
       ),
     );
   }
