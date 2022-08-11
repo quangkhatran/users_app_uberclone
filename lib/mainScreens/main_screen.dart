@@ -199,8 +199,18 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: sKey,
-      drawer: MyDrawer(
-          name: userModelCurrentInfo!.name, email: userModelCurrentInfo!.email),
+      drawer: Container(
+        width: 265,
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.black,
+          ),
+          child: MyDrawer(
+            name: userModelCurrentInfo!.name,
+            email: userModelCurrentInfo!.email,
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           GoogleMap(
