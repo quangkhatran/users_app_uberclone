@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../authentication/login_screen.dart';
 import '../global/global.dart';
+import '../authentication/login_screen.dart';
 import '../mainScreens/main_screen.dart';
+import '../assistants/assistant_methods.dart';
 
 class MySplashScreen extends StatefulWidget {
   @override
@@ -13,6 +14,9 @@ class MySplashScreen extends StatefulWidget {
 
 class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
+    fAuth.currentUser != null
+        ? AssistantMethods.readCurrentOnlineUserInfo()
+        : null;
     Timer(const Duration(seconds: 3), () async {
       if (await fAuth.currentUser != null) {
         currentFirebaseUser = fAuth.currentUser;
