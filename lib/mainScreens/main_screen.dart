@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../global/global.dart';
 import '../authentication/login_screen.dart';
+import '../assistants/assistant_methods.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -184,6 +185,12 @@ class _MainScreenState extends State<MainScreen> {
                       }
                     ]
                 ''');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    AssistantMethods.readCurrentOnlineUserInfo();
   }
 
   @override
