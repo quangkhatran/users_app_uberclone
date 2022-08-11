@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:users_app/widgets/my_drawer.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../global/global.dart';
+import '../widgets/my_drawer.dart';
 import '../authentication/login_screen.dart';
 import '../assistants/assistant_methods.dart';
 
@@ -24,6 +25,12 @@ class _MainScreenState extends State<MainScreen> {
 
   GlobalKey<ScaffoldState> sKey = GlobalKey<ScaffoldState>();
   double searchLocationContainerHeight = 220.0;
+
+  Position? userCurrentPosition;
+  var geoLocator = Geolocator();
+
+  LocationPermission? _locationPermission;
+  double bottomPaddingOfMap = 0;
 
   blackThemeGoogleMap() {
     newGoogleMapController!.setMapStyle('''
@@ -191,9 +198,35 @@ class _MainScreenState extends State<MainScreen> {
                 ''');
   }
 
+  checkIfLocationPermissionAllowed() async {
+    _locationPermission = await Geolocator.requestPermission();
+
+    if (_locationPermission == LocationPermission.denied) {
+      _locationPermission = await Geolocator.requestPermission();
+    }
+  }
+
+  locateUserPosition() async {
+    Position cPosition = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+
+    userCurrentPosition = cPosition;
+
+    LatLng latLngPosition =
+        LatLng(userCurrentPosition!.latitude, userCurrentPosition!.longitude);
+
+    CameraPosition cameraPosition =
+        CameraPosition(target: latLngPosition, zoom: 14);
+
+    newGoogleMapController!
+        .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  }
+
   @override
   void initState() {
     super.initState();
+
+    checkIfLocationPermissionAllowed();
   }
 
   @override
@@ -215,8 +248,11 @@ class _MainScreenState extends State<MainScreen> {
       body: Stack(
         children: [
           GoogleMap(
+            padding: EdgeInsets.only(bottom: bottomPaddingOfMap),
             mapType: MapType.normal,
             myLocationEnabled: true,
+            zoomGesturesEnabled: true,
+            zoomControlsEnabled: true,
             initialCameraPosition: _kGooglePlex,
             onMapCreated: (GoogleMapController controller) {
               _controllerGoogleMap.complete(controller);
@@ -224,6 +260,12 @@ class _MainScreenState extends State<MainScreen> {
 
               // for black theme google map
               blackThemeGoogleMap();
+
+              setState(() {
+                bottomPaddingOfMap = 240;
+              });
+
+              locateUserPosition();
             },
           ),
 
@@ -256,7 +298,7 @@ class _MainScreenState extends State<MainScreen> {
               child: Container(
                 height: searchLocationContainerHeight,
                 decoration: const BoxDecoration(
-                  color: Colors.black,
+                  color: Colors.black54,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(20.0),
                     topLeft: Radius.circular(20.0),
