@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import './infoHandler/app_info.dart';
 import './splashScreen/splash_screen.dart';
 
 void main() async {
@@ -9,13 +11,16 @@ void main() async {
 
   runApp(
     MyApp(
-      child: MaterialApp(
-        title: 'Drivers App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+      child: ChangeNotifierProvider(
+        create: (context) => AppInfo(),
+        child: MaterialApp(
+          title: 'Drivers App',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: MySplashScreen(),
+          debugShowCheckedModeBanner: false,
         ),
-        home: MySplashScreen(),
-        debugShowCheckedModeBanner: false,
       ),
     ),
   );

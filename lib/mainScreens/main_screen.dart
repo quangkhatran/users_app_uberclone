@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:provider/provider.dart';
 
 import '../global/global.dart';
+import '../infoHandler/app_info.dart';
 import '../widgets/my_drawer.dart';
 import '../authentication/login_screen.dart';
 import '../assistants/assistant_methods.dart';
@@ -223,7 +225,7 @@ class _MainScreenState extends State<MainScreen> {
 
     String humanReadableAddress =
         await AssistantMethods.searchAddressForGeographicCoOrdinates(
-            userCurrentPosition!);
+            userCurrentPosition!, context);
 
     print('this is your Address = ' + humanReadableAddress);
   }
@@ -338,7 +340,15 @@ class _MainScreenState extends State<MainScreen> {
                                 ),
                               ),
                               Text(
-                                'your current location',
+                                Provider.of<AppInfo>(context)
+                                            .userPickUpLocation !=
+                                        null
+                                    ? (Provider.of<AppInfo>(context)
+                                                .userPickUpLocation!
+                                                .locationName!)
+                                            .substring(0, 16) +
+                                        '...'
+                                    : 'not getting address',
                                 style: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 14,
