@@ -346,7 +346,7 @@ class _MainScreenState extends State<MainScreen> {
                                     ? (Provider.of<AppInfo>(context)
                                                 .userPickUpLocation!
                                                 .locationName!)
-                                            .substring(0, 16) +
+                                            .substring(0, 24) +
                                         '...'
                                     : 'not getting address',
                                 style: const TextStyle(
