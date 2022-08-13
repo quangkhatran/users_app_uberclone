@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
+import 'package:users_app/mainScreens/search_places_screen.dart';
 
 import '../global/global.dart';
 import '../infoHandler/app_info.dart';
@@ -374,35 +375,44 @@ class _MainScreenState extends State<MainScreen> {
                       ),
 
                       // to
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.add_location_alt_outlined,
-                            color: Colors.grey,
-                          ),
-                          const SizedBox(
-                            width: 12.0,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'To',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
+                      GestureDetector(
+                        onTap: () {
+                          // go to search places screen
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (c) => SearchPlacesScreen()));
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.add_location_alt_outlined,
+                              color: Colors.grey,
+                            ),
+                            const SizedBox(
+                              width: 12.0,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'To',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'Where to go?',
-                                style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 14,
+                                Text(
+                                  'Where to go?',
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 14,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
 
                       const SizedBox(
